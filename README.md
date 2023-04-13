@@ -24,10 +24,10 @@
 
 该项目使用以下技术栈：
 
-- React：用于构建用户界面和组件。
-- Redux：用于管理应用程序状态和数据流。
+- bootstrap：用于构建用户界面和组件。
+- JavaScript 和 Laravel：用于管理应用程序状态和数据流。
 - Node.js 和 Express：用于开发后端 API。
-- MongoDB：用于存储和管理数据。
+- MySQL：用于存储和管理数据。
 
 ## 贡献者
 
