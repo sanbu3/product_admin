@@ -33,3 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', function () {
     return view('products.index');
 });
+
+
+//商品
+Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');

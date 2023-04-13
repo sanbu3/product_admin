@@ -201,7 +201,7 @@
             display: grid;
             min-height: 100vh;
             /*分成两列*/
-            grid-template-columns: 1fr 3fr;
+            grid-template-columns: 25% 75%;
             grid-template-areas: 'filter products';
         }
 
@@ -365,7 +365,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: row;
-            width: 300px;
+            width: 100%;
             /* background: #f5f5f5; */
             border-radius: 5px;
             border: 1px solid #e5e5e5;
@@ -499,7 +499,7 @@
             box-shadow: 0 0 5px #ccc;
             overflow: hidden;
             /* padding: 10px; */
-            width: 230px;
+            width: 200px;
             height: 263px;
         }
 

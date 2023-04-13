@@ -56,7 +56,7 @@
                     <div class="money-symbol">$</div>
                     <input type="text" placeholder="Max"/>
                 </div>
-{{--                under$500--}}
+                {{--                under$500--}}
                 <div class="under-price">
                     <input type="text" placeholder="Under $500">
                 </div>
@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="products-item-wrapper">
-                <div class="product-item">
+                {{--<div class="product-item">
                     <img src="https://via.placeholder.com/150" alt="Product Image"/>
                     <div class="price">$9.99</div>
                     <div class="description">
@@ -110,45 +110,27 @@
                             <box-icon name='cake' type='solid' color="white" size="20px"></box-icon>
                         </div>
                     </div>
-                </div>
-                <div class="product-item">
-                    <img src="https://via.placeholder.com/150" alt="Product Image"/>
-                    <div class="price">$9.99</div>
-                    <div class="description">
-                        This is a product description. It is a very long description and may
-                        need to be truncated if it is too long.
-                    </div>
-                    <div class="sold">
-                        <div class="star">
-                            <box-icon type='solid' name='star' color="white" size="20px"></box-icon>
-                            5.0
+                </div>--}}
+                @foreach($products as $product)
+                    <div class="product-item">
+                        <img src="{{ $product->image }}" alt="Product Image"/>
+                        <div class="price">${{ $product->price }}</div>
+                        <div class="description">
+                            {{ $product->description }}
                         </div>
-                        |
-                        <span>100 sold</span>
-                        <div class="buy">
-                            <box-icon name='cake' type='solid' color="white"></box-icon>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-item">
-                    <img src="https://via.placeholder.com/150" alt="Product Image"/>
-                    <div class="price">$9.99</div>
-                    <div class="description">
-                        This is a product description. It is a very long description and may
-                        need to be truncated if it is too long.
-                    </div>
-                    <div class="sold">
-                        <div class="star">
-                            <box-icon type='solid' name='star' color="white" size="20px"></box-icon>
-                            5.0
-                        </div>
-                        |
-                        <span>100 sold</span>
-                        <div class="buy">
-                            <box-icon name='cake' type='solid' color="white"></box-icon>
+                        <div class="sold">
+                            <div class="star">
+                                <box-icon type='solid' name='star' color="white" size="20px"></box-icon>
+                                5.0
+                            </div>
+                            |
+                            <span>100 sold</span>
+                            <div class="buy">
+                                <box-icon name='cake' type='solid' color="white" size="20px"></box-icon>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
 @endsection
