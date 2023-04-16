@@ -1,4 +1,7 @@
 @extends('layouts.app_new')
+@vite('resources/js/renderProducts.js')
+@vite('resources/js/products/gotoItem.js')
+@vite('resources/css/products.index.css')
 @section('content')
     <div class="grid-container">
         <div class="filter">
@@ -10,13 +13,15 @@
                 <div class="supplier-type-item">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="supplier-type-1" name="supplier-type-1"
-                               value="1">
+                               value="1" id="supplier-type-1"
+                        >
                         <label class="form-check-label" for="supplier-type-1">Supplier Type 1</label>
                     </div>
 
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="supplier-type-2" name="supplier-type-2"
-                               value="2">
+                               value="2" id="supplier-type-2"
+                        >
                         <label class="form-check-label" for="supplier-type-2">Supplier Type 2</label>
                     </div>
                 </div>
@@ -50,21 +55,21 @@
             <div class="input-of-price">
                 <div class="input-price-item">
                     <div class="money-symbol">$</div>
-                    <input type="text" placeholder="Min"/>
+                    <input type="text" placeholder="Min" id="min-price"/>
                 </div>
                 <div class="input-price-item">
                     <div class="money-symbol">$</div>
-                    <input type="text" placeholder="Max"/>
+                    <input type="text" placeholder="Max" id="max-price"/>
                 </div>
                 {{--                under$500--}}
                 <div class="under-price">
-                    <input type="text" placeholder="Under $500">
+                    <input type="text" placeholder="Under $500" id="under-price-0">
                 </div>
                 <div class="under-price">
-                    <input type="text" placeholder="$500~$1000">
+                    <input type="text" placeholder="$500~$1000" id="under-price-1">
                 </div>
                 <div class="under-price">
-                    <input type="text" placeholder="$1000~$1500">
+                    <input type="text" placeholder="$1000~$1500" id="under-price-2">
                 </div>
             </div>
         </div>
@@ -79,40 +84,18 @@
             });
         </script>
 
-        <div class="products">
-            <div class="search-result">1-16 ower 7,000 results for "iphone"</div>
-            <div class="category">
-                <div class="category-item">
-                    <a href="">Phone</a>
-                    <box-icon name='x-circle' size="20px" color="#ccc"></box-icon>
-                </div>
-                <div class="category-item">
-                    <a href="">Apple</a>
-                    <box-icon name='x-circle' size="20px" color="#ccc"></box-icon>
-                </div>
+        <div class="products" id="products" data-products="">
+            <div class="search-result d-none"
+                 id="search-result"
+            >
+            </div>
+            <div class="category d-none"
+                 id="category" data-category=""
+            >
             </div>
             <div class="products-item-wrapper">
-                {{--<div class="product-item">
-                    <img src="https://via.placeholder.com/150" alt="Product Image"/>
-                    <div class="price">$9.99</div>
-                    <div class="description">
-                        This is a product description. It is a very long description and may
-                        need to be truncated if it is too long.
-                    </div>
-                    <div class="sold">
-                        <div class="star">
-                            <box-icon type='solid' name='star' color="white" size="20px"></box-icon>
-                            5.0
-                        </div>
-                        |
-                        <span>100 sold</span>
-                        <div class="buy">
-                            <box-icon name='cake' type='solid' color="white" size="20px"></box-icon>
-                        </div>
-                    </div>
-                </div>--}}
                 @foreach($products as $product)
-                    <div class="product-item">
+                    <div class="product-item" onclick="gotoItem({{$product->id}})">
                         <img src="{{ $product->image }}" alt="Product Image"/>
                         <div class="price">${{ $product->price }}</div>
                         <div class="description">
@@ -131,6 +114,13 @@
                         </div>
                     </div>
                 @endforeach
+                <script>
+                    function gotoItem(id) {
+                        //Route::get('/products/item/{id}', [App\Http\Controllers\ProductController::class, 'item'])->name('products.item');
+                        window.location.href = `/products/item/${id}`
+                    }
+                </script>
             </div>
         </div>
+    </div>
 @endsection

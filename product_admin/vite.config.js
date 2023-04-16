@@ -5,11 +5,11 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/sass/app.scss',
+                'resources/sass/app.scss',  //这里是你的入口文件,可以是多个
                 'resources/js/app.js',
             ],
             refresh: true,
-        }),
+        })
     ],
     build: {
         manifest: true,
