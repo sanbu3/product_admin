@@ -11,6 +11,8 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    {{--axios--}}
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
     <title>
         @yield('title', 'Laravel')
     </title>
@@ -220,7 +222,7 @@
 
         .filter-title {
             margin-bottom: 20px;
-            font-size: 25px ;
+            font-size: 25px;
             font-weight: 500;
         }
 
@@ -350,7 +352,7 @@
             justify-content: space-between;
         }
 
-        .input-of-price{
+        .input-of-price {
             margin-top: 10px;
             display: flex;
             flex-direction: column;
@@ -401,7 +403,7 @@
             font-size: 14px;
         }
 
-        .under-price input{
+        .under-price input {
             width: 100%;
             height: 100%;
             border: 1px solid #e5e5e5;
@@ -410,11 +412,11 @@
             padding: 5px 10px;
         }
 
-        .under-price:nth-last-child(1) input{
+        .under-price:nth-last-child(1) input {
             border-bottom-right-radius: 10px;
         }
 
-        .under-price input::placeholder{
+        .under-price input::placeholder {
             font-weight: 500;
             font-size: 14px;
         }
@@ -667,7 +669,6 @@
                             userCenter.innerHTML = `
                             <div class="user-center">
                                 <img src="${picture}" alt="${name}">
-
                             </div>
                         `
                         });
@@ -689,6 +690,23 @@
             </div>
         @endguest
     </div>
+    <script>
+        const searchBtn = document.querySelector('#search-btn');
+        const searchInput = document.querySelector('#search-input');
+        searchBtn.addEventListener('click', () => {
+            const searchValue = searchInput.value;
+            axios.get(`products/search/${searchValue}`)
+                .then(res => {
+                    const products = res.data
+                    renderResults(products)
+                })
+        });// 搜索按钮点击事件,逻辑：点击搜索按钮，获取搜索框的值，如果有值，就跳转到商品列表页，把搜索框的值传递过去
+
+        function renderResults(products) {
+            let childView = document.getElementById('products')
+            childView.dataset.products = JSON.stringify(products)   // 把数据存到子视图的data-products属性上
+        }
+    </script>
 </div>
 <main style="min-height: 100vh;">
     @yield('content')

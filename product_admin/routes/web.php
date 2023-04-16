@@ -13,12 +13,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
+Auth::routes(); //登录、注册
 
-Auth::routes();
+//Test
+Route::get('/test', function () {
+    return view('test\axiostest');
+});
+//searchresult
+Route::get('/s', function () {
+    return view('products.searchresult');
+});
+///test/axios控制器
+Route::get('/test/axios', [App\Http\Controllers\TestController::class, 'axios'])->name('test.axios');
 
 //登录、注册
 Route::get('/login', function () {
@@ -30,10 +39,9 @@ Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 's
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('products.index');
-});
-
 
 //商品
 Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
+//接收搜索关键字
+Route::get('/products/search/{keyword}', [App\Http\Controllers\ProductController::class, 'search'])->name('products.search');
+//购物车
