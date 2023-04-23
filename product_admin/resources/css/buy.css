@@ -1,0 +1,126 @@
+/* 结算页面 */
+.checkout-page {
+    position: fixed;
+    /*margin居中*/
+    margin: auto 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    /*快速过度  */
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s;
+}
+
+.checkout-page .container {
+    background: var(--bg-color);
+    width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+}
+
+.checkout-header {
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 10px 10px 0 0;
+}
+
+.checkout-header h2 {
+    margin: 0;
+}
+
+.close-checkout {
+    background: transparent;
+    font-size: 32px;
+    float: right;
+    color: #fff;
+    opacity: .4;
+    padding: var(--search-btn-padding);
+    border-radius: var(--rounded-rect-border-radius);
+    border: 1px solid var(--search-btn-bg-color);
+    cursor: pointer;
+    /*transition: opacity .2s;*/
+}
+
+.close-checkout:hover {
+    opacity: 1;
+}
+
+.checkout-content {
+    padding: 30px;
+    border-radius: 0 0 10px 10px;
+    background: var(--bg-light-color);
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-group {
+    width: 31.3333%;
+}
+
+.form-group.address {
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+}
+
+.checkout-total {
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+}
+
+.checkout-total p {
+    margin: 0 0 10px;
+}
+
+.total span {
+    font-weight: bold;
+}
+
+.place-order {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* mask */
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(5px);
+    z-index: 9;
+    display: none;
+}

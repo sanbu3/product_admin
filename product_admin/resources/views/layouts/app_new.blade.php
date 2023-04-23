@@ -10,6 +10,7 @@
     <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     {{--axios--}}
     <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
     <title>
@@ -75,6 +76,7 @@
             </select>
             <div class="cart">
                 <box-icon name='cart' color="#bcbcbc"></box-icon>
+                <span class="badge rounded-pill bg-warning text-light">1</span>
                 {{--            <span>购物车</span>--}}
             </div>
             <div class="message">

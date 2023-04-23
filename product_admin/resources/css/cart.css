@@ -1,0 +1,216 @@
+:root {
+    --primary-color: #5ABC68;
+    --secondary-color: #F5AE3E;
+    --border-color: #E6E6E6;
+    --text-color: #333;
+    --transition: all 0.3s ease;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+/* 头部 */
+.cart-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.cart-header__title {
+    font-size: 24px;
+    margin: 0 10px 0 0;
+}
+.cart-header i {
+    color: var(--primary-color);
+    margin-right: 5px;
+}
+.cart-header__item-count {
+    font-size: 14px;
+    color: #fff;
+    background-color: var(--secondary-color);
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+/* 表格 */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+.cart-table thead th {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 10px 15px;
+    text-align: center;
+}
+.cart-table tbody td {
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 10px;
+}
+.cart-table tbody tr:hover {
+    background-color: #fafafa;
+}
+.cart-table__item {
+    width: 150px;
+}
+.cart-table__quantity {
+    width: 200px;
+}
+.cart-table__price,
+.cart-table__subtotal {
+    width: 120px;
+}
+.cart-table__remove button {
+    /* danger按钮样式 */
+    background-color: #f44336;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+
+}
+/* 结算 */
+.cart-checkout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+.cart-coupon {
+    position: relative;
+    width: 200px;
+}
+.cart-coupon__code {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    border-radius: 3px;
+}
+.cart-coupon__btn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.cart-total {
+    text-align: right;
+}
+.cart-total p {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+}
+.cart-total p span {
+    font-weight: bold;
+}
+.cart-total__price {
+    font-size: 18px;
+    font-weight: bold;
+}
+.cart-checkout__btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.cart-checkout__btn:hover {
+    background-color: #459f5e;
+}
+/* 空状态 */
+.cart-empty {
+    text-align: center;
+    padding: 60px 0;
+}
+.cart-empty__icon {
+    color: var(--primary-color);
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+.cart-empty__title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.cart-empty__desc {
+    color: #666;
+    margin-bottom: 20px;
+}
+.cart-empty__link {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.cart-empty__link:hover {
+    background-color: #459f5e;
+}
+
+/* 数量选择器 */
+.quantity {
+    display: inline-flex;
+    align-items: center;
+    background-color: #fafafa;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+}
+
+.quantity__input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: none;
+}
+
+.quantity__input:focus {
+    outline: none;
+}
+
+.quantity__btn {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+.quantity__decrease {
+    border-right: 1px solid var(--border-color);
+}
+
+.quantity__increase {
+    border-left: 1px solid var(--border-color);
+}
+
+.quantity__btn i {
+    line-height: 30px;
+    color: var(--text-color);
+}
+
+.quantity__btn:hover i {
+    color: var(--primary-color);
+}
+
+@media only screen and (max-width: 768px) {
+    .cart-table,
+    .cart-checkout {
+        flex-direction: column;
+    }
+}
+
+

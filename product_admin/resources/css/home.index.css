@@ -166,6 +166,14 @@ body {
     cursor: pointer;
 }
 
+.cart {
+    /*border: 1.5px solid #ea732e;*/
+    /*白色的背景显示一点黑色的阴影,显得拟态*/
+    box-shadow: 0 0 0 1.5px #ea732e;
+    border-radius: 8px;
+    padding: 2px 5px;
+}
+
 .cart box-icon,
 .message box-icon,
 .user box-icon,
@@ -180,4 +188,22 @@ body {
     border-radius: 50%;
     margin-right: 10px;
     border: 2px solid #ddd;
+    /*transition: box-shadow 0.3s ease;
+    transition: transform 0.3s ease;*/
+/*    这两句过度会冲突,可以这么写*/
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+
+.user-center img:hover {
+    /*    四边灰色阴影.依次深浅*/
+    /*box-shadow: 0 0 0 1px #a9a8a8, 0 0 0 2px #a1a0a0, 0 0 0 3px #d0cfcf, 0 0 0 4px #ddd;*/
+    /*上面这个阴影宽一点*/
+    box-shadow: 0 0 0 1px #a9a8a8, 0 0 0 3px rgba(219, 122, 64, 0.5), 0 0 0 3px #d0cfcf, 0 0 0 5px #ddd, 0 0 0 6px rgba(219, 122, 64, 0.8);
+    border-radius: 35px;
+}
+
+
+.user-center img:active {
+    transform: scale(0.9);
 }
