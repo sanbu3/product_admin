@@ -1,42 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
 <head>
     <title>后台管理</title>
     <!-- 使用常量定义页面标题 -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- 引入 ECharts 库 -->
     <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
     @vite('resources/css/admin/index.css')
 </head>
 <body>
 <header class="page-header">
-    <!-- 使用常量定义页面标题 -->
     <h1>后台管理</h1>
     <nav>
         <ul class="navigation-menu">
-            <li><a href="#">功能1</a></li>
-            <li><a href="#">功能2</a></li>
-            <li><a href="#">功能3</a></li>
-            <li><a href="#">功能4</a></li>
+            <li><a href="{{ route('home.index') }}">产品首页</a></li>
+            <li><a href="#">待加功能</a></li>
+            <li><a href="#">待加功能</a></li>
+            <li><a href="{{ route('logout') }}">退出登录</a></li>
         </ul>
     </nav>
-    <!-- 使用常量定义欢迎信息 -->
-    <p class="welcome-message">欢迎管理员<a href="#">
-            {{ Auth::user()->name}}
-        </a>登录</p>
 </header>
 <main>
     <section class="statistics">
         <!-- 使用常量定义统计信息标题 -->
         <div class="statistics-item">
             <h2>订单数量</h2>
-            <p id="order-count"></p>
+            <p id="order-count" class="count" data-count="4210"></p>
         </div>
         <div class="statistics-item">
             <h2>用户数量</h2>
-            <p id="user-count"></p>
+            <p id="user-count" class="count" data-count="8000"></p>
         </div>
     </section>
+    <script>
+        /**
+         * countUp函数用于从0开始不断增大文本内的数字值,直到达到指定目标数字。
+         * @author: sanbu.wang
+         * @param selector
+         * @param target
+         * @param incrementTime
+         */
+        function countUp(selector, target, incrementTime) {
+            // 获取数字文本元素
+            const count = document.querySelector(selector);
+            //设置初始值    0
+            count.textContent = 0;
+
+            // 目标数字
+            const targetNum = target;
+
+            // 每秒增加的数量
+            const inc = targetNum / 100 / incrementTime;
+
+            // 计数器
+            let current = 0;
+
+            // 定时器
+            const timer = setInterval(() => {
+                current += inc;
+                count.textContent = Math.floor(current);
+
+                if (current >= targetNum) {
+                    count.textContent = targetNum;
+                    clearInterval(timer);
+                }
+            }, incrementTime);
+        }
+        //#user-count和#order-count
+        countUp('#user-count', Math.floor(document.querySelector('#user-count').dataset.count), 2);
+        countUp('#order-count', Math.floor(document.querySelector('#order-count').dataset.count), 1);
+    </script>
     <div class="chart-container">
         <!-- 新增代码 -->
         <div class="chart-item">
@@ -48,6 +80,9 @@
             <div class="chart" id="user-chart"></div>
         </div>
     </div>
+    <script>
+
+    </script>
 </main>
 <script>
     // 模拟数据

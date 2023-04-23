@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         :root {
             --primary-color: #5ABC68;
@@ -13,6 +12,8 @@
             --border-color: #E6E6E6;
             --text-color: #333;
             --transition: all 0.3s ease;
+            --not-imoportant-font-size: 14px;
+            --not-important-color: #999;
         }
 
         /* 页头样式 */
@@ -105,13 +106,18 @@
             font-size: 20px;
             font-weight: bold;
             color: var(--text-color);
+            text-align: center;
         }
 
         .statistics-item p {
             margin: 10px 0 0;
-            font-size: 24px;
+            /*计算文字大小*/
+            font-size: calc(var(--not-imoportant-font-size) * 1.5);
             font-weight: bold;
-            color: var(--text-color);
+            color: var(--not-important-color);
+            text-align: center;
+            display: inline-block;
+            width: 100%;
         }
 
         .statistics-item.loading::before {
@@ -130,7 +136,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .chart-container {
@@ -158,6 +166,22 @@
             background-color: #f5f5f5;
             border-radius: var(--border-radius);
         }
+
+        .counter {
+            display: inline-block;
+            background-color: #f2f2f2;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 24px;
+        }
+
+        .count {
+            display: inline-block;
+            width: 50px;
+            text-align: center;
+            transition: all 1s ease-out;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -174,19 +198,48 @@
 </header>
 <main>
     <div class="statistics">
-        <div class="statistics-item">
-            <h2>总产品数</h2>
-            <p>100</p>
+        <div class="statistics-item"><h2>总产品数</h2>
+            <p class="count" data-count="100"></p>
         </div>
-        <div class="statistics-item">
-            <h2>总销售额</h2>
-            <p>10000</p>
+        <div class="statistics-item"><h2>总销售额</h2>
+            <p class="count" data-count="10000"></p>
         </div>
-        <div class="statistics-item">
-            <h2>总利润</h2>
-            <p>5000</p>
+        <div class="statistics-item"><h2>总利润</h2>
+            <p class="count" data-count="5000"></p>
         </div>
     </div>
+    <script> function countUp(selector, target, incrementTime) { // 获取数字文本元素
+            const count = document.querySelector(selector);
+            // 设置初始值 0
+            count.textContent = '0';
+            // 目标数字
+            const targetNum = target;
+
+            // 每秒增加的数量
+            const inc = targetNum / 100 / incrementTime;
+
+            // 计数器
+            let current = 0;
+
+            // 定时器
+            const timer = setInterval(() => {
+                current += inc;
+                count.textContent = Math.floor(current).toString();
+
+                if (current >= targetNum) {
+                    count.textContent = targetNum;
+                    clearInterval(timer);
+                }
+            }, incrementTime);
+        }
+
+        countUp('.statistics-item:first-child p', 100, 1);
+        countUp('.statistics-item:nth-child(2) p', 10000, 1);
+        countUp('.statistics-item:last-child p', 5000, 1);
+        Array.from(document.getElementsByClassName('count')).forEach(count => {
+            countUp(count, count.dataset.count, 2);
+        });
+    </script>
     <div class="chart-container">
         <div class="chart-item">
             <h2>销售额走势图</h2>

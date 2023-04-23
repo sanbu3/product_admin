@@ -11,6 +11,16 @@ body {
     user-select: none;
 }
 
+/*清除a的默认样式*/
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
 .header {
     display: flex;
     justify-content: space-between;

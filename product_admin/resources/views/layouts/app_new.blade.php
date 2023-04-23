@@ -25,10 +25,10 @@
     <!-- 两个大盒子header-left、header-right，header-left里面放logo、搜索框（div包含左边选框、搜索框、搜索按钮，
       header-right里面放下拉中英文、购物车、消息、登录、注册最后是|隔开在放用户头像，这里间隔开一点，用flex布局 -->
     <div class="header-left">
-        <div class="logo">
-            <box-icon type='logo' name='graphql' color="#ea732e" size="45px"></box-icon>
-            <span>Sanbu</span>
-        </div>
+        <a class="logo" href="{{ route('home.index') }}">
+                <box-icon type='logo' name='graphql' color="#ea732e" size="45px"></box-icon>
+                <span>Sanbu</span>
+        </a>
         <div class="search-box">
             <div class="search-box-left">
                 <select name="city" id="select-city">
@@ -79,6 +79,13 @@
                 <span class="badge rounded-pill bg-warning text-light">1</span>
                 {{--            <span>购物车</span>--}}
             </div>
+            <script>
+                //cart
+                const cart = document.querySelector('.cart');
+                cart.addEventListener('click', function () {
+                    window.location.href = '{{ route('cart') }}';
+                })
+            </script>
             <div class="message">
                 <box-icon name='bell'
                           color="#bcbcbc"

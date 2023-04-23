@@ -30,7 +30,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //商品
-Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
+Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('home.index');
 //接收搜索关键字
 Route::get('/products/search/{keyword}', [App\Http\Controllers\ProductController::class, 'search'])->name('products.search');
 //购物车
@@ -50,11 +50,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/orders', function () {
         return view('admin.orders', ['user' => Auth::user()]);
     })->name('admin.orders');
+    //cart
+    Route::get('/cart', function () {
+        return view('userdefined.cart');
+    })->name('cart');
+    //admin.users,并携带user表的数据
+    Route::get('/admin/users', function () {
+        return view('admin.users', ['users' => App\Models\User::all()]);
+    })->name('admin.users');
 });
-
-//测试userdefined.cart
-Route::get('/cart', function () {
-    return view('userdefined.cart');
-})->name('cart');
 
 
